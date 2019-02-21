@@ -49,16 +49,7 @@ class Drone {
     // Send command method
     command(cmd) {
         this.drone.send('command', this.config.PORT, this.config.IP, this._handleError)
-        //this.drone.send(cmd, this.config.PORT, this.config.IP, this._handleError)
-        this.drone.send('battery?', this.config.PORT, this.config.IP, this._handleError)
-        setTimeout(() => {
-            this.drone.send('takeoff', this.config.PORT, this.config.IP, this._handleError)
-            setTimeout(() => {
-                console.log()
-                this.drone.send('land', this.config.PORT, this.config.IP, this._handleError)
-            }, 5000);
-        }, 4000);
-
+        this.drone.send(cmd, this.config.PORT, this.config.IP, this._handleError)
     }
 
 }
